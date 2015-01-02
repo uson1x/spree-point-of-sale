@@ -1,4 +1,4 @@
-//= require jquery.ui.tabs
+//= require jquery-ui/tabs
 $( document ).ready(function() {
   $('#sku').focus();
   $( "#pos-tabs" ).tabs();

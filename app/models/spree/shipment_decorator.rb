@@ -3,8 +3,8 @@ Spree::Shipment.class_eval do
   validate :empty_inventory, :if => ["order.is_pos?", "stock_location_id.present?", :stock_location_id_changed? ] 
 
   def finalize_pos
-    self.state = "shipped"
-    inventory_units.each &:ship!
+    # self.ship!
+    # inventory_units.each &:ship!
     self.save
     touch :delivered_at
   end

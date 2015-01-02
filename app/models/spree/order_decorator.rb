@@ -16,8 +16,17 @@ Spree::Order.class_eval do
     touch :completed_at
     create_tax_charge!
     save!
-    pending_payments.first.capture!
+    payments.first.capture!
+    # capture_payments!
+    self.finalize!
+    updater.update_payment_state
     shipments.each { |shipment|  shipment.finalize_pos }
+    
+
+    updater.update_shipment_state
+    save!
+    updater.run_hooks
+
     deliver_order_confirmation_email
   end
 

@@ -185,7 +185,7 @@ class Spree::Admin::PosController < Spree::Admin::BaseController
   end
 
   def add_variant var , quant = 1
-    line_item = @order.contents.add(var, quant, nil, @order.pos_shipment)
+    line_item = @order.contents.add(var, quant, {shipment: @order.pos_shipment})
     var.product.save
     line_item
   end
@@ -204,7 +204,7 @@ class Spree::Admin::PosController < Spree::Admin::BaseController
 
   def print
     @order.complete_via_pos
-    url = SpreePos::Config[:pos_printing].sub("number" , @order.number.to_s)
-    redirect_to url
+    # url = SpreePos::Config[:pos_printing].sub("number" , @order.number.to_s)
+    redirect_to admin_pos_new_url
   end
 end
