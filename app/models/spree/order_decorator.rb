@@ -18,7 +18,7 @@ Spree::Order.class_eval do
     save!
     payments.first.capture!
     # capture_payments!
-    self.finalize!
+    # self.finalize!
     updater.update_payment_state
     shipments.each { |shipment|  shipment.finalize_pos }
     
