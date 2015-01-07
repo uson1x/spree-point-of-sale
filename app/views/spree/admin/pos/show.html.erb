@@ -19,7 +19,7 @@
     <%= form_tag("/admin/pos/find/#{@order.number}", :method => :get, :id => "product_search") do  %>
       <input type="hidden" value="1" name="index">
       <div class="box">
-        <p> <%= text_field_tag :sku, "" , :size => 15 %> <%= button Spree.t("search") %> </p>
+        <p> <%= text_field_tag :name, "" , :size => 15 %> <%= button Spree.t("search") %> </p>
       </div>
     <% end %>
   </div>

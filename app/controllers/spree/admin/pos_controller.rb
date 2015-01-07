@@ -199,6 +199,7 @@ class Spree::Admin::PosController < Spree::Admin::BaseController
   def init_search
     params[:q] ||= {}
     params[:q].merge!(:meta_sort => "product_name asc", :deleted_at_null => "1", :product_deleted_at_null => "1", :published_at_not_null => "1")
+    params[:q][:product_name_cont] ||= params[:name] if params[:name].present?
     params[:q][:product_name_cont].try(:strip!)
   end
 
